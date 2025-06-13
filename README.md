@@ -1,14 +1,25 @@
 # Radwegenetz Münster
 
-Die Datei kann hier heruntergeladen werden: 
-https://od-ms.github.io/radweg-knotenpunkte-muensterland/münsterland_radnetz.gpkg
+Die Dateien können hier heruntergeladen werden: 
+
+* Knotenpunkte & Knotenpunktenetz als Geopackage: https://od-ms.github.io/radweg-knotenpunkte-muensterland/münsterland_radnetz.gpkg
+* Knotenpunkte als Geojson: https://od-ms.github.io/radweg-knotenpunkte-muensterland/knotenpunkte_muensterland.geojson
+* Knotenpunktenetz als Geojson: https://od-ms.github.io/radweg-knotenpunkte-muensterland/knotenpunktnetz_muensterland.geojson
+
+Eine Vorschau der Fahrradweg-Knotenpunkte und des verbindenden Knotenpunktnetzes gibt es hier: 
+https://od-ms.github.io/radweg-knotenpunkte-muensterland/
 
 
+Die Dateien werden monatlich aktualisiert per Github Action Schedule.
 
 
 Quelle für das Radweg-Knotenpunktenetz NRW: https://www.radverkehrsnetz.nrw.de/rvn_link.asp
 
-    Zitat (Stand 13.06.25): "Im Rahmen der 'Open Data - Initiative' des Landes NRW stellt das Ministerium für Umwelt, Naturschutz und Verkehr Daten aus dem Radroutenplaner NRW (für das Gebiet NRW) zur freien Nutzung bereit. Das Angebot ist lizensiert unter der Datenlizenz Deutschland – Zero – Version 2.0." 
+Lizenz der Daten: 
+*Zitat (Stand 13.06.25): "Im Rahmen der 'Open Data - Initiative' des Landes NRW stellt das Ministerium für Umwelt, Naturschutz und Verkehr Daten aus dem Radroutenplaner NRW (für das Gebiet NRW) zur freien Nutzung bereit. Das Angebot ist lizensiert unter der Datenlizenz Deutschland – Zero – Version 2.0."*
+
+
+# Münsterland aus den NRW Daten extrahieren
 
 ## Rechner vorbereiten
 
@@ -43,5 +54,13 @@ ogr2ogr -f GPKG münsterland_radnetz.gpkg \
   -update -append \
   -progress \
   knotenpunktnetz_nw.gpkg knotenpunktnetz_nw
+
+# Als geojson speichern
+
+ogr2ogr -f GeoJSON knotenpunkte_muensterland.geojson \
+  münsterland_radnetz.gpkg knotenpunkte_muensterland
+
+ogr2ogr -f GeoJSON knotenpunktnetz_muensterland.geojson \
+  münsterland_radnetz.gpkg knotenpunktnetz_muensterland
 
 ```

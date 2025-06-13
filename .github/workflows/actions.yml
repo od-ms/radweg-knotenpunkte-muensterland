@@ -1,12 +1,11 @@
 name: Rebuild
 
-on: push
-    
-  # push: {branches: [main]}
-  # run automatically in schedule
-  # schedule: [{cron: "12 12 * * *"}]
-  # workflow_dispatch: {}
+on: 
+  push: {branches: [main]}
 
+  # run on 3rd day every month, 03:03 o'clock
+  schedule: [{cron: "3 3 3 * *"}]
+    
 permissions:
   contents: read
   pages: write
