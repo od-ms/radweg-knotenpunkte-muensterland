@@ -23,4 +23,13 @@ ogr2ogr -f GPKG münsterland_radnetz.gpkg \
   -progress \
   knotenpunktnetz_nw.gpkg knotenpunktnetz_nw
 
+# Als geojson speichern
+ogr2ogr -f GeoJSON knotenpunkte_muensterland.geojson \
+  münsterland_radnetz.gpkg knotenpunkte_muensterland
+
+ogr2ogr -f GeoJSON knotenpunktnetz_muensterland.geojson \
+  münsterland_radnetz.gpkg knotenpunktnetz_muensterland
+
+# Move to upload folder
 mv münsterland_radnetz.gpkg dist/ 
+mv *.geojson dist/

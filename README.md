@@ -1,5 +1,11 @@
 # Radwegenetz Münster
 
+Die Datei kann hier heruntergeladen werden: 
+https://od-ms.github.io/radweg-knotenpunkte-muensterland/münsterland_radnetz.gpkg
+
+
+
+
 Quelle für das Radweg-Knotenpunktenetz NRW: https://www.radverkehrsnetz.nrw.de/rvn_link.asp
 
     Zitat (Stand 13.06.25): "Im Rahmen der 'Open Data - Initiative' des Landes NRW stellt das Ministerium für Umwelt, Naturschutz und Verkehr Daten aus dem Radroutenplaner NRW (für das Gebiet NRW) zur freien Nutzung bereit. Das Angebot ist lizensiert unter der Datenlizenz Deutschland – Zero – Version 2.0." 
