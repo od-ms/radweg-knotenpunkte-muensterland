@@ -1,2 +1,41 @@
-# radweg-knotenpunkte-muensterland
-Open Data Datensatz der Radweg Knotenpunkte im Münsterland
+# Radwegenetz Münster
+
+Quelle für das Radweg-Knotenpunktenetz NRW: https://www.radverkehrsnetz.nrw.de/rvn_link.asp
+
+    Zitat (Stand 13.06.25): "Im Rahmen der 'Open Data - Initiative' des Landes NRW stellt das Ministerium für Umwelt, Naturschutz und Verkehr Daten aus dem Radroutenplaner NRW (für das Gebiet NRW) zur freien Nutzung bereit. Das Angebot ist lizensiert unter der Datenlizenz Deutschland – Zero – Version 2.0." 
+
+## Rechner vorbereiten
+
+Tool `ogr2ogr` installieren:
+
+```bash
+sudo apt install gdal-bin
+```
+
+## Radwegenetz und Knotenpunkte Münsterland ausschneiden
+
+```bash
+# -N        only download newer files
+# --debug   show headers and stuff
+wget -N --debug https://www.radverkehrsnetz.nrw.de/downloads/knotenpunktnetz_nw.gpkg
+
+# Gucken welche Layer da drin sind
+ogrinfo knotenpunktnetz_nw.gpkg 
+
+# Münsterland ausschneiden 
+ogr2ogr -f GPKG münsterland_radnetz.gpkg \
+  -spat 6.6 51.6 8.3 52.3 \
+  -nln knotenpunkte_muensterland \
+  -s_srs EPSG:4326 -t_srs EPSG:4326 \
+  -progress \
+  knotenpunktnetz_nw.gpkg knotenpunkte_nw
+
+ogr2ogr -f GPKG münsterland_radnetz.gpkg \
+  -spat 6.6 51.6 8.3 52.3 \
+  -nln knotenpunktnetz_muensterland \
+  -s_srs EPSG:4326 -t_srs EPSG:4326 \
+  -update -append \
+  -progress \
+  knotenpunktnetz_nw.gpkg knotenpunktnetz_nw
+
+```
